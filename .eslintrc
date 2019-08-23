@@ -1,0 +1,6 @@
+{
+  "extends": "@unicoda/eslint-config",
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

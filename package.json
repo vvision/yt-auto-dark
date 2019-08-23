@@ -1,0 +1,13 @@
+{
+  "name": "ytAutoDark",
+  "version": "0.0.2",
+  "description": "",
+  "author": "Victor Voisin",
+  "license": "GPLv3",
+  "devDependencies": {
+    "@unicoda/eslint-config": "^0.7.0",
+    "@unicoda/prettier-config": "^0.1.0",
+    "eslint": "^5.16.0",
+    "prettier": "^1.15.3"
+  }
+}

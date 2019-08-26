@@ -1,6 +1,7 @@
 {
   "extends": "@unicoda/eslint-config",
-  "parserOptions": {
-    "sourceType": "module"
+  "globals": {
+    "document": true,
+    "window": true
   }
 }

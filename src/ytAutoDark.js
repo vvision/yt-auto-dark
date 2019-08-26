@@ -16,14 +16,14 @@
  */
 
 const isDarkThemeEnabled = () => {
-  return !!document.querySelector('html').hasAttribute('dark');
+  return Boolean(document.querySelector('html').hasAttribute('dark'));
 };
 
 /*
  * Three dot menu button.
  */
 const isMenuButtonAvailableInDom = () => {
-  return !!document.querySelectorAll('ytd-topbar-menu-button-renderer')[2];
+  return Boolean(document.querySelectorAll('ytd-topbar-menu-button-renderer')[2]);
 };
 
 const openCloseMenu = () => {
@@ -35,7 +35,7 @@ const openCloseMenu = () => {
  * Link arrow to dark theme popup.
  */
 const isCompactLinkAvailableInDom = () => {
-  return !!document.querySelector('ytd-toggle-theme-compact-link-renderer');
+  return Boolean(document.querySelector('ytd-toggle-theme-compact-link-renderer'));
 };
 
 const openCloseRenderer = () => {
@@ -47,9 +47,9 @@ const openCloseRenderer = () => {
  * Check toggle button.
  */
 const isSwitchAvailableInDom = () => {
-  return !!document.querySelector(
+  return Boolean(document.querySelector(
     'paper-toggle-button.ytd-toggle-item-renderer',
-  );
+  ));
 };
 
 /*

@@ -1,9 +1,21 @@
 {
   "name": "ytAutoDark",
   "version": "0.0.2",
-  "description": "",
+  "description": "Automatically switch Youtube to its built-in dark theme.",
   "author": "Victor Voisin",
   "license": "GPLv3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vvision/yt-auto-dark"
+  },
+  "bugs": {
+    "url": "https://github.com/vvision/yt-auto-dark/issues"
+  },
+  "scripts": {
+    "build": "web-ext build -s src -o",
+    "lint": "web-ext lint -s src",
+    "start:firefox": "web-ext run --source-dir ./src/"
+  },
   "devDependencies": {
     "@unicoda/eslint-config": "^0.7.0",
     "@unicoda/prettier-config": "^0.1.0",

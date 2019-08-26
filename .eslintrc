@@ -1,7 +1,3 @@
 {
-  "extends": "@unicoda/eslint-config",
-  "globals": {
-    "document": true,
-    "window": true
-  }
+  "extends": "@unicoda/eslint-config/configurations/frontend"
 }

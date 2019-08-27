@@ -67,25 +67,35 @@ const switchToDarkTheme = () => {
 /*
  * Wait for all elements to exist in DOM then switch
  */
-const trySwitchingToDark = () => {
+let start = null;
+const trySwitchingToDark = (timestamp) => {
+  // If already dark, do nothing
   if (isDarkThemeEnabled()) {
     return;
   }
 
-  if (!isMenuButtonAvailableInDom()) {
-    window.requestAnimationFrame(trySwitchingToDark);
-  } else if (!isCompactLinkAvailableInDom()) {
-    openCloseMenu();
-    window.requestAnimationFrame(trySwitchingToDark);
-  } else if (!isSwitchAvailableInDom()) {
-    openCloseRenderer();
-    window.requestAnimationFrame(trySwitchingToDark);
-  } else {
-    switchToDarkTheme();
+  // Compute runtime
+  if (!start) {
+    start = timestamp;
+  }
+  const runtime = timestamp - start;
+  // Try to switch only during 10s
+  if(runtime < 10000) {
+    if (!isMenuButtonAvailableInDom()) {
+      window.requestAnimationFrame(trySwitchingToDark);
+    } else if (!isCompactLinkAvailableInDom()) {
+      openCloseMenu();
+      window.requestAnimationFrame(trySwitchingToDark);
+    } else if (!isSwitchAvailableInDom()) {
+      openCloseRenderer();
+      window.requestAnimationFrame(trySwitchingToDark);
+    } else {
+      switchToDarkTheme();
+    }
   }
 };
 
 /*
  * Execute
  */
-trySwitchingToDark();
+window.requestAnimationFrame(trySwitchingToDark);

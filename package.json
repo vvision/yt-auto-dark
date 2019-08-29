@@ -1,6 +1,6 @@
 {
   "name": "ytAutoDark",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Automatically switch Youtube to its built-in dark theme.",
   "author": "Victor Voisin",
   "license": "GPLv3",

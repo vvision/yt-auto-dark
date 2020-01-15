@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Victor Voisin",
   "description": "Automatically switch Youtube to its built-in dark theme.",
+  "homepage_url": "https://github.com/vvision/yt-auto-dark",
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],

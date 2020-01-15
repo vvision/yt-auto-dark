@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "ytAutoDark",
+  "name": "YtAutoDark",
   "version": "1.0.0",
   "author": "Victor Voisin",
   "description": "Automatically switch Youtube to its built-in dark theme.",

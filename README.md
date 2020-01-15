@@ -1,4 +1,4 @@
-ytAutoDark
+YtAutoDark
 ==========
 
 Automatically switch Youtube to its built-in dark theme.

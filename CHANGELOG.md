@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.1 (2020-01-16)
+### Changed
+- Taller extension name on icon.
+
+### Fixed
+- Fix icons path.
+
 ## 1.1.0 (2020-01-15)
 ### Added
 - Add a changelog.

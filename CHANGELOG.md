@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2 (2020-01-26)
+### Added
+- Icon 16x16, 32x32 and 128x128.
+
+### Changed
+- Remove text from icon and add a border.
+
 ## 1.1.1 (2020-01-16)
 ### Changed
 - Taller extension name on icon.

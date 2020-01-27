@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "Automatic Dark Theme For Youtube™",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Automatically switch Youtube to its built-in dark theme.",
+    "description": "Description of the extension."
+  }
+}

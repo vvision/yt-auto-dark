@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.3 (2020-01-27)
+### Added
+- ``short_name`` property in manifest.
+- Locales: en + fr
+- Screenshots
+
+### Changed
+- Change name.
+
 ## 1.1.2 (2020-01-26)
 ### Added
 - Icon 16x16, 32x32 and 128x128.
@@ -17,7 +26,7 @@
 ## 1.1.0 (2020-01-15)
 ### Added
 - Add a changelog.
-- Add homepage_url property.
+- Add ``homepage_url`` property.
 - Add icons.
 
 ### Changed
@@ -25,7 +34,7 @@
 
 ## 1.0.0 (2020-01-15)
 ### Added
-- Set strict_min_version property to 60.0.
+- Set ``strict_min_version`` property to 60.0.
 
 ## 0.0.3 (2019-08-30)
 Initial version published.

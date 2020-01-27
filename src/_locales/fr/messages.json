@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "Thème Sombre Automatique pour Youtube™",
+    "description": "Nom de l'extension."
+  },
+
+  "extensionDescription": {
+    "message": "Utilise automatiquement le thème sombre proposé par Youtube™.",
+    "description": "Description de l'extension."
+  }
+}

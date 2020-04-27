@@ -17,10 +17,10 @@
     "start:firefox": "web-ext run --source-dir ./src/"
   },
   "devDependencies": {
-    "@unicoda/eslint-config": "^0.7.0",
-    "@unicoda/prettier-config": "^0.1.0",
-    "eslint": "^5.16.0",
-    "prettier": "^1.15.3",
+    "@unicoda/eslint-config": "^0.9.1",
+    "@unicoda/prettier-config": "^0.2.0",
+    "eslint": "^6.8.0",
+    "prettier": "^2.0.5",
     "web-ext": "^4.2.0"
   }
 }

@@ -23,7 +23,9 @@ const isDarkThemeEnabled = () => {
  * Three dot menu button.
  */
 const isMenuButtonAvailableInDom = () => {
-  return Boolean(document.querySelectorAll('ytd-topbar-menu-button-renderer')[2]);
+  return Boolean(
+    document.querySelectorAll('ytd-topbar-menu-button-renderer')[2],
+  );
 };
 
 const openCloseMenu = () => {
@@ -35,7 +37,9 @@ const openCloseMenu = () => {
  * Link arrow to dark theme popup.
  */
 const isCompactLinkAvailableInDom = () => {
-  return Boolean(document.querySelector('ytd-toggle-theme-compact-link-renderer'));
+  return Boolean(
+    document.querySelector('ytd-toggle-theme-compact-link-renderer'),
+  );
 };
 
 const openCloseRenderer = () => {
@@ -47,9 +51,9 @@ const openCloseRenderer = () => {
  * Check toggle button.
  */
 const isSwitchAvailableInDom = () => {
-  return Boolean(document.querySelector(
-    'paper-toggle-button.ytd-toggle-item-renderer',
-  ));
+  return Boolean(
+    document.querySelector('paper-toggle-button.ytd-toggle-item-renderer'),
+  );
 };
 
 /*
@@ -68,7 +72,7 @@ const switchToDarkTheme = () => {
  * Wait for all elements to exist in DOM then switch
  */
 let start = null;
-const trySwitchingToDark = (timestamp) => {
+const trySwitchingToDark = timestamp => {
   // If already dark, do nothing
   if (isDarkThemeEnabled()) {
     return;
@@ -80,7 +84,7 @@ const trySwitchingToDark = (timestamp) => {
   }
   const runtime = timestamp - start;
   // Try to switch only during 10s
-  if(runtime < 10000) {
+  if (runtime < 10000) {
     if (!isMenuButtonAvailableInDom()) {
       window.requestAnimationFrame(trySwitchingToDark);
     } else if (!isCompactLinkAvailableInDom()) {

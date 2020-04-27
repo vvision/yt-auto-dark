@@ -20,6 +20,7 @@
     "@unicoda/eslint-config": "^0.7.0",
     "@unicoda/prettier-config": "^0.1.0",
     "eslint": "^5.16.0",
-    "prettier": "^1.15.3"
+    "prettier": "^1.15.3",
+    "web-ext": "^4.2.0"
   }
 }

@@ -1,5 +1,5 @@
 /* ytAutoDark. Automatically switch Youtube to its built-in dark theme.
- * Copyright (C) 2019  Victor VOISIN
+ * Copyright (C) 2019-2020  Victor VOISIN
 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -12,9 +12,10 @@
     "url": "https://github.com/vvision/yt-auto-dark/issues"
   },
   "scripts": {
-    "build": "web-ext build -s src -o",
+    "build": "npm run noDevDebug && web-ext build -s src -o",
     "lint": "web-ext lint -s src",
-    "start:firefox": "web-ext run --source-dir ./src/"
+    "start:firefox": "web-ext run --source-dir ./src/",
+    "noDevDebug": "node utils/isDebugDisable.js"
   },
   "devDependencies": {
     "@unicoda/eslint-config": "^0.9.1",

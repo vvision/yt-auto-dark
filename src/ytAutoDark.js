@@ -83,8 +83,8 @@ const trySwitchingToDark = timestamp => {
     start = timestamp;
   }
   const runtime = timestamp - start;
-  // Try to switch only during 10s
-  if (runtime < 10000) {
+  // Try to switch only during 15s
+  if (runtime < 15000) {
     if (!isMenuButtonAvailableInDom()) {
       window.requestAnimationFrame(trySwitchingToDark);
     } else if (!isCompactLinkAvailableInDom()) {

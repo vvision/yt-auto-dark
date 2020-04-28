@@ -179,6 +179,11 @@ const trySwitchingToDark = timestamp => {
         clickMenu();
       }
     }
+  } else {
+    // Timeout with new activation process. Try the old one.
+    setTimeout(() => {
+      window.requestAnimationFrame(trySwitchingToDarkTheOldWay);
+    }, 500);
   }
 };
 
@@ -186,3 +191,51 @@ const trySwitchingToDark = timestamp => {
  * Execute
  */
 window.requestAnimationFrame(trySwitchingToDark);
+
+/*
+ * @Deprecated
+ * Old way of doing things.
+ * Kept here for backward compatibility.
+ * Will be removed in a few month.
+ */
+
+// @Deprecated
+const openCloseMenu = () => {
+  document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
+  document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
+};
+
+// @Deprecated
+const openCloseRenderer = () => {
+  document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
+  document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
+};
+
+// @Deprecated
+let startOldWay = null;
+const trySwitchingToDarkTheOldWay = timestamp => {
+  // If already dark, do nothing
+  if (isDarkThemeEnabled()) {
+    return;
+  }
+
+  // Compute runtime
+  if (!startOldWay) {
+    startOldWay = timestamp;
+  }
+  const runtime = timestamp - startOldWay;
+  // Try to switch only during 10s
+  if (runtime < 10000) {
+    if (!isMenuButtonAvailableInDom()) {
+      window.requestAnimationFrame(trySwitchingToDark);
+    } else if (!isCompactLinkAvailableInDom()) {
+      openCloseMenu();
+      window.requestAnimationFrame(trySwitchingToDark);
+    } else if (!isSwitchAvailableInDom()) {
+      openCloseRenderer();
+      window.requestAnimationFrame(trySwitchingToDark);
+    } else {
+      switchToDarkTheme();
+    }
+  }
+};

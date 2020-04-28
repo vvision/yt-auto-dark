@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.0 (2020-04-28)
+
+### Added
+- Log messages to be able to follow activation steps and ease debugging during development.
+  Should not be activate in production.
+
+### Changed
+- Will try to switch theme during 15s rather than 10s before giving up.
+
+### Fixed
+- Menu was not being closed anymore with v1.1.3, because Youtube deployed a new code.
+
 ## 1.1.3 (2020-01-27)
 ### Added
 - ``short_name`` property in manifest.

@@ -1,4 +1,4 @@
-/* ytAutoDark. Automatically switch Youtube to its built-in dark theme.
+/* ytAutoDark. Automatically toggle Youtube built-in dark theme.
  * Copyright (C) 2019-2020  Victor VOISIN
 
  * This program is free software: you can redistribute it and/or modify
@@ -49,8 +49,7 @@ const isMenuOpen = () => {
 
 const isMenuLoading = () => {
   return !(
-    document.getElementById('spinner') &&
-    Boolean(document.getElementById('spinner').getAttribute('aria-hidden'))
+    document.getElementById('spinner')
   );
 };
 
@@ -94,84 +93,78 @@ const isSwitchAvailableInDom = () => {
 };
 
 /*
- * Enable dark theme by clicking element in DOM.
+ * Toggle dark theme by clicking element in DOM.
  */
-const switchToDarkTheme = () => {
+const toggleDarkTheme = () => {
   if (isCompactLinkAvailableInDom() && isSwitchAvailableInDom()) {
-    logStep('Switch to dark theme.');
+    logStep('Toggle dark theme.');
     document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
     document
       .querySelector('paper-toggle-button.ytd-toggle-item-renderer')
       .click();
   } else {
-    logStep('Unable to switch. Waiting longer.');
+    logStep('Unable to toggle. Waiting longer.');
     setTimeout(() => {
-      window.requestAnimationFrame(trySwitchingToDark);
-    }, 500);
+      window.requestAnimationFrame(tryTogglingDarkMode);
+    }, 50);
   }
 };
 
 /*
- * Wait for all elements to exist in DOM then switch
+ * Wait for all elements to exist in DOM then toggle
  * Step 1: Wait for 3 dots menu in DOM.
  * Step 2: Click on 3 dots to open menu.
  * Step 3: Wait for menu to finish loading.
  * Step 4: Waiting for link to sub-menu (Should be optional now, because of step 3).
  * Step 5: Click to open sub-menu (renderer pane).
  * Step 6: Wait for sub-menu to finish loading.
- * Step 7: Switch to dark theme.
+ * Step 7: Toggle dark theme.
  * Step 8: Close menu.
  */
 let start = null;
-const trySwitchingToDark = timestamp => {
-  // If already dark, do nothing
-  if (isDarkThemeEnabled()) {
-    logStep('Dark theme activated !');
-    return;
-  }
-
+const tryTogglingDarkMode = timestamp => {
   // Compute runtime
   if (!start) {
     start = timestamp;
   }
   const runtime = timestamp - start;
-  // Try to switch only during 15s
-  if (runtime < 15000) {
+  // Try to toggle only during 10s
+  if (runtime < 10000) {
     if (!isMenuButtonAvailableInDom()) {
       logStep('Waiting for 3 dots menu.');
       setTimeout(() => {
-        window.requestAnimationFrame(trySwitchingToDark);
-      }, 500);
+        window.requestAnimationFrame(tryTogglingDarkMode);
+      }, 50);
     } else if (!isMenuOpen()) {
       logStep('Menu is not open.');
       clickMenu();
       setTimeout(() => {
-        window.requestAnimationFrame(trySwitchingToDark);
-      }, 500);
+        window.requestAnimationFrame(tryTogglingDarkMode);
+      }, 50);
     } else if (isMenuLoading()) {
       logStep('3 dots menu is loading.');
       setTimeout(() => {
-        window.requestAnimationFrame(trySwitchingToDark);
-      }, 500);
+        window.requestAnimationFrame(tryTogglingDarkMode);
+      }, 50);
     } else if (isMenuOpen() && !isCompactLinkAvailableInDom()) {
       logStep('Loading menu, waiting for compact link.');
       setTimeout(() => {
-        window.requestAnimationFrame(trySwitchingToDark);
-      }, 500);
+        window.requestAnimationFrame(tryTogglingDarkMode);
+      }, 50);
     } else if (!isRendererOpen()) {
       logStep('Renderer is not open.');
       clickRenderer();
       setTimeout(() => {
-        window.requestAnimationFrame(trySwitchingToDark);
-      }, 500);
+        window.requestAnimationFrame(tryTogglingDarkMode);
+      }, 50);
     } else if (isRendererOpen() && isRendererLoading()) {
       logStep('Loading renderer.');
       setTimeout(() => {
-        window.requestAnimationFrame(trySwitchingToDark);
-      }, 500);
+        window.requestAnimationFrame(tryTogglingDarkMode);
+      }, 50);
     } else {
-      logStep('Should be able to switch to dark theme.');
-      switchToDarkTheme();
+      logStep('Should be able to toggle dark theme.');
+      toggleDarkTheme();
       // console.log('Close renderer');
       // clickRenderer(); // Close dark theme menu
       if (isMenuOpen()) {
@@ -182,15 +175,10 @@ const trySwitchingToDark = timestamp => {
   } else {
     // Timeout with new activation process. Try the old one.
     setTimeout(() => {
-      window.requestAnimationFrame(trySwitchingToDarkTheOldWay);
-    }, 500);
+      window.requestAnimationFrame(tryTogglingDarkModeTheOldWay);
+    }, 50);
   }
 };
-
-/*
- * Execute
- */
-window.requestAnimationFrame(trySwitchingToDark);
 
 /*
  * @Deprecated
@@ -213,29 +201,45 @@ const openCloseRenderer = () => {
 
 // @Deprecated
 let startOldWay = null;
-const trySwitchingToDarkTheOldWay = timestamp => {
-  // If already dark, do nothing
-  if (isDarkThemeEnabled()) {
-    return;
-  }
-
+const tryTogglingDarkModeTheOldWay = timestamp => {
   // Compute runtime
   if (!startOldWay) {
     startOldWay = timestamp;
   }
   const runtime = timestamp - startOldWay;
-  // Try to switch only during 10s
-  if (runtime < 10000) {
+  // Try to toggle only during 5s
+  if (runtime < 5000) {
     if (!isMenuButtonAvailableInDom()) {
-      window.requestAnimationFrame(trySwitchingToDark);
+      window.requestAnimationFrame(tryTogglingDarkMode);
     } else if (!isCompactLinkAvailableInDom()) {
       openCloseMenu();
-      window.requestAnimationFrame(trySwitchingToDark);
+      window.requestAnimationFrame(tryTogglingDarkMode);
     } else if (!isSwitchAvailableInDom()) {
       openCloseRenderer();
-      window.requestAnimationFrame(trySwitchingToDark);
+      window.requestAnimationFrame(tryTogglingDarkMode);
     } else {
-      switchToDarkTheme();
+      toggleDarkTheme();
+      startOldWay = null;
     }
   }
 };
+
+const setDarkMode = on => {
+  var darkModeOn = isDarkThemeEnabled();
+  if (on) {
+    if (!darkModeOn)
+      window.requestAnimationFrame(tryTogglingDarkMode);
+  } else if (darkModeOn)
+    window.requestAnimationFrame(tryTogglingDarkMode);
+}
+
+/*
+ * Execute
+ */
+if (window.matchMedia) {// if the browser/os supports system-level color scheme
+  setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => setDarkMode(e.matches));
+} else {// otherwise use local time to decide
+  let hour = (new Date()).getHours();
+  setDarkMode(hour > 18 || hour < 8);
+}

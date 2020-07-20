@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0 (2020-07-20)
+
+### Changed
+- Toggle dark mode based on system theme or local time
+
 ## 2.0.0 (2020-04-28)
 
 ### Added

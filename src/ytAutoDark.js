@@ -25,6 +25,32 @@ const logStep = message => {
   }
 };
 
+/**
+ * Error logger
+ */
+const logError = error => {
+  console.error(`Error: ${error}`);
+};
+
+/**
+ *
+ */
+browser.runtime.onInstalled.addListener(
+  async ({ previousVersion, reason, temporary }) => {
+    if (temporary) return; // skip during development
+    if (previousVersion && previousVersion.charAt(0) === '3') {
+      return; // Do not show release notes after minor updates.
+    }
+    if (reason === 'install' || reason === 'update') {
+      const url = browser.runtime.getURL('pages/welcome/welcome.html');
+      await browser.tabs.create({ url });
+    }
+  },
+);
+
+/**
+ * Is dark theme enabled ?
+ */
 const isDarkThemeEnabled = () => {
   return Boolean(document.querySelector('html').hasAttribute('dark'));
 };

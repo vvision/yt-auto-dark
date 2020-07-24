@@ -15,6 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * Debugging helpers
+ */
 const debug = false;
 const logStep = message => {
   if (debug) {
@@ -26,7 +29,7 @@ const isDarkThemeEnabled = () => {
   return Boolean(document.querySelector('html').hasAttribute('dark'));
 };
 
-/*
+/**
  * Three dot menu button.
  */
 const isMenuButtonAvailableInDom = () => {
@@ -51,7 +54,7 @@ const isMenuLoading = () => {
   return !document.getElementById('spinner');
 };
 
-/*
+/**
  * Link arrow to dark theme popup.
  */
 const isCompactLinkAvailableInDom = () => {
@@ -81,7 +84,7 @@ const isRendererLoading = () => {
   );
 };
 
-/*
+/**
  * Check toggle button.
  */
 const isSwitchAvailableInDom = () => {
@@ -90,7 +93,7 @@ const isSwitchAvailableInDom = () => {
   );
 };
 
-/*
+/**
  * Toggle dark theme by clicking element in DOM.
  */
 const toggleDarkTheme = () => {
@@ -108,7 +111,7 @@ const toggleDarkTheme = () => {
   }
 };
 
-/*
+/**
  * Wait for all elements to exist in DOM then toggle
  * Step 1: Wait for 3 dots menu in DOM.
  * Step 2: Click on 3 dots to open menu.
@@ -178,26 +181,32 @@ const tryTogglingDarkMode = timestamp => {
   }
 };
 
-/*
+/**
  * @Deprecated
  * Old way of doing things.
  * Kept here for backward compatibility.
  * Will be removed in a few month.
  */
 
-// @Deprecated
+/**
+ * @Deprecated
+ */
 const openCloseMenu = () => {
   document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
   document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
 };
 
-// @Deprecated
+/**
+ * @Deprecated
+ */
 const openCloseRenderer = () => {
   document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
   document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
 };
 
-// @Deprecated
+/**
+ * @Deprecated
+ */
 let startOldWay = null;
 const tryTogglingDarkModeTheOldWay = timestamp => {
   // Compute runtime
@@ -229,8 +238,9 @@ const setDarkMode = on => {
   } else if (darkModeOn) window.requestAnimationFrame(tryTogglingDarkMode);
 };
 
-/*
- * Execute
+/**
+ * Get settings and execute
+ * Doc: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/get
  */
 const options = ['prefersColorScheme', 'timeBased', 'beforeHour', 'afterHour'];
 browser.storage.sync.get(options).then(settings => {

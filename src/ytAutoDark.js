@@ -264,18 +264,20 @@ const setDarkMode = on => {
  */
 const options = ['prefersColorScheme', 'timeBased', 'beforeHour', 'afterHour'];
 browser.storage.sync.get(options).then(settings => {
-  logStep(`Storage contains: ${settings}`);
+  logStep(`Storage contains: ${JSON.stringify(settings)}`);
   if (window.matchMedia && settings.prefersColorScheme) {
     // if the browser/os supports system-level color scheme
+    logStep('Follow system-level color scheme.');
     setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', e => setDarkMode(e.matches));
   } else if (settings.timeBased) {
-    // otherwise use local time to decide
+    logStep('Use local time to decide.');
     let hour = new Date().getHours();
     setDarkMode(hour > settings.afterHour || hour < settings.beforeHour);
   } else {
     window.requestAnimationFrame(tryTogglingDarkMode);
+    logStep('Default behavior.');
   }
 }, logError);

@@ -46,6 +46,7 @@ const saveOptions = async e => {
 const restoreOptions = () => {
   const setCurrentChoice = result => {
     if (result) {
+      logStep(`Restoring options: ${JSON.stringify(result)}`);
       for (const option of options.keys()) {
         const value = result[option] || defaultOptions[option];
         if (value) {

@@ -277,7 +277,7 @@ browser.storage.sync.get(options).then(settings => {
     let hour = new Date().getHours();
     setDarkMode(hour > settings.afterHour || hour < settings.beforeHour);
   } else {
-    window.requestAnimationFrame(tryTogglingDarkMode);
     logStep('Default behavior.');
+    setDarkMode(true);
   }
 }, logError);

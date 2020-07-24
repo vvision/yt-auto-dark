@@ -258,10 +258,14 @@ const tryTogglingDarkModeTheOldWay = timestamp => {
 };
 
 const setDarkMode = on => {
-  var darkModeOn = isDarkThemeEnabled();
+  const isDarkModeOn = isDarkThemeEnabled();
   if (on) {
-    if (!darkModeOn) window.requestAnimationFrame(tryTogglingDarkMode);
-  } else if (darkModeOn) window.requestAnimationFrame(tryTogglingDarkMode);
+    if (!isDarkModeOn) {
+      window.requestAnimationFrame(tryTogglingDarkMode);
+    }
+  } else if (isDarkModeOn) {
+    window.requestAnimationFrame(tryTogglingDarkMode);
+  }
 };
 
 /**

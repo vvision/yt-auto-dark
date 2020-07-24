@@ -232,14 +232,20 @@ const setDarkMode = on => {
 /*
  * Execute
  */
-if (window.matchMedia) {
-  // if the browser/os supports system-level color scheme
-  setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-  window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', e => setDarkMode(e.matches));
-} else {
-  // otherwise use local time to decide
-  let hour = new Date().getHours();
-  setDarkMode(hour > 18 || hour < 8);
-}
+const options = ['prefersColorScheme', 'timeBased', 'beforeHour', 'afterHour'];
+browser.storage.sync.get(options).then(settings => {
+  logStep(`Storage contains: ${settings}`);
+  if (window.matchMedia && settings.prefersColorScheme) {
+    // if the browser/os supports system-level color scheme
+    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', e => setDarkMode(e.matches));
+  } else if (settings.timeBased) {
+    // otherwise use local time to decide
+    let hour = new Date().getHours();
+    setDarkMode(hour > settings.afterHour || hour < settings.beforeHour);
+  } else {
+    window.requestAnimationFrame(tryTogglingDarkMode);
+  }
+}, logError);

@@ -7,5 +7,37 @@
   "extensionDescription": {
     "message": "Automatically switch Youtube to its built-in dark theme.",
     "description": "Description of the extension."
+  },
+  "prefersColorSchemeTitle": {
+    "message": "Use prefers-color-scheme",
+    "description": "prefers-color-scheme settings title."
+  },
+  "prefersColorSchemeDescription": {
+    "message": "Will follow browser/os system-level color scheme if browser supports it. (Priority 1)",
+    "description": "prefers-color-scheme settings description."
+  },
+  "timeBasedTitle": {
+    "message": "Use time based toggle",
+    "description": "time based toggle settings title."
+  },
+  "timeBasedDescription": {
+    "message": "Will toggle dark theme only during . (Priority 2)",
+    "description": "time based toggle settings description."
+  },
+  "beforeHourTitle": {
+    "message": "Toggle before hour",
+    "description": "beforeHour settings title."
+  },
+  "beforeHourDescription": {
+    "message": "Toggle dark theme before specified hour if time based toggle is activated.",
+    "description": "beforeHour settings description."
+  },
+  "afterHourTitle": {
+    "message": "Toggle after hour",
+    "description": "afterHour settings title."
+  },
+  "afterHourDescription": {
+    "message": "Toggle dark theme after specified hour if time based toggle is activated.",
+    "description": "afterHour settings description."
   }
 }

@@ -17,16 +17,26 @@
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
-      "js": ["ytAutoDark.js"]
+      "js": [
+        "ytAutoDark.js"
+      ]
     }
   ],
+
+  "options_ui": {
+    "page": "pages/options/options.html"
+  },
+  "permissions": ["storage"],
+
   "applications": {
     "gecko": {
       "id": "vvision-ytAutoDark@unicoda.fr"
     }
   },
+
   "browser_specific_settings": {
     "gecko": {
+      "id": "vvision-ytAutoDark@unicoda.fr",
       "strict_min_version": "60.0"
     }
   }

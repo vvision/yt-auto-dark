@@ -16,16 +16,6 @@
  */
 
 /**
- * Debugging helpers
- */
-const debug = false;
-const logStep = message => {
-  if (debug) {
-    console.log(message);
-  }
-};
-
-/**
  * Error logger
  */
 const logError = error => {

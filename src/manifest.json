@@ -18,6 +18,7 @@
     {
       "matches": ["*://*.youtube.com/*"],
       "js": [
+        "core/logger.js",
         "ytAutoDark.js"
       ]
     }

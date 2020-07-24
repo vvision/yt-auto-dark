@@ -22,6 +22,7 @@
     "build": "npm run noDevDebug && npm run lint && web-ext build -s src -o",
     "lint": "web-ext lint -s src",
     "start:firefox": "web-ext run --source-dir ./src/ --start-url www.youtube.com",
+    "start:firefox:verbose": "npm run start:firefox -- --verbose",
     "noDevDebug": "node utils/isDebugDisable.js"
   },
   "devDependencies": {

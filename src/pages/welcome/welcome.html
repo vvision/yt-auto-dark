@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title>3.0 Hello - YtAutoDark</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,50 +11,61 @@
   <body>
     <img src="ytAutoDark-simple.svg" alt="ytAutoDark" class="logo" />
     <div class="container">
-      <h1>What's new in version 3.0?</h1>
+      <h1><span data-i18n-content="WhatIsNewTitle"></span> 3.0?</h1>
       <div class="notice">
         <span class="subtle-hint">
-          <span class="topic-label">Settings</span>
-          <br />YtAutoDark keeps its default behavior, and gets some settings to
-          adjust the way it's triggered.
-        </span>
-      </div>
-
-      <div class="notice">
-        <span class="subtle-hint">
-          <span class="topic-label color-purple">Prefers-color-scheme</span>
-          <br />If active, YtAutoDark follows browser/os system-level color
-          scheme if browser supports it.
-        </span>
-      </div>
-
-      <div class="notice">
-        <span class="subtle-hint">
-          <span class="topic-label">Time based toggle</span>
-          <br />If active, YtAutoDark will only toggle dark theme before and
-          after the configured hours.
-        </span>
-      </div>
-
-      <div class="notice">
-        <span class="subtle-hint">
-          <span class="topic-label color-purple">Synced</span>
-          <br />YtAutoDark uses synced storage. <br />Settings should be shared
-          across all instances of that browser that the user is logged into.
+          <span class="topic-label" data-i18n-content="settingsLabel"></span>
           <br />
-          If synced storage is not available, it should automatically fallback
-          to local storage.
+          <span data-i18n-content="settingsDesc"></span>
         </span>
       </div>
 
       <div class="notice">
         <span class="subtle-hint">
-          <span class="topic-label color">Install/update page</span>
-          <br />This page will allow users to be notified of new major versions.
+          <span
+            class="topic-label color-purple"
+            data-i18n-content="colorSchemeLabel"
+          ></span>
+          <br />
+          <span data-i18n-content="colorSchemeDesc"></span>
         </span>
       </div>
 
-      <h1>Learn more, or contribute</h1>
+      <div class="notice">
+        <span class="subtle-hint">
+          <span class="topic-label" data-i18n-content="timeBasedLabel"></span>
+          <br />
+          <span data-i18n-content="timeBasedDesc"></span>
+        </span>
+      </div>
+
+      <div class="notice">
+        <span class="subtle-hint">
+          <span
+            class="topic-label color-purple"
+            data-i18n-content="syncedLabel"
+          ></span>
+          <br />
+          <span data-i18n-content="syncedDesc1"></span>
+          <br />
+          <span data-i18n-content="syncedDesc2"></span>
+          <br />
+          <span data-i18n-content="syncedDesc3"></span>
+        </span>
+      </div>
+
+      <div class="notice">
+        <span class="subtle-hint">
+          <span
+            class="topic-label color"
+            data-i18n-content="installUpdateLabel"
+          ></span>
+          <br />
+          <span data-i18n-content="installUpdateDesc"></span>
+        </span>
+      </div>
+
+      <h1 data-i18n-content="learnMoreTitle"></h1>
       <div class="btn-panel">
         <a
           class="btn btn-changelog"
@@ -75,7 +86,7 @@
           class="btn btn-donate"
           href="https://www.paypal.com/paypalme/vvisionUnicoda"
           target="_blank"
-          ><span class="btn-text">Donate</span>
+          ><span class="btn-text" data-i18n-content="donate"></span>
         </a>
         <!--
         <a class="btn btn-author" href="" target="_blank"
@@ -84,5 +95,9 @@
         -->
       </div>
     </div>
+
+    <script src="../../modules/internal/helpers.js"></script>
+    <script src="../../core/logger.js"></script>
+    <script src="welcome.js"></script>
   </body>
 </html>

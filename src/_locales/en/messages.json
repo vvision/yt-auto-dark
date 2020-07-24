@@ -21,7 +21,7 @@
     "description": "time based toggle settings title."
   },
   "timeBasedDescription": {
-    "message": "Will toggle dark theme only during . (Priority 2)",
+    "message": "Will toggle dark theme only during certain hours. (Priority 2)",
     "description": "time based toggle settings description."
   },
   "beforeHourTitle": {

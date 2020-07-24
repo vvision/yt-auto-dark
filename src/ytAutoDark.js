@@ -16,13 +16,6 @@
  */
 
 /**
- * Error logger
- */
-const logError = error => {
-  console.error(`Error: ${error}`);
-};
-
-/**
  *
  */
 browser.runtime.onInstalled.addListener(
@@ -259,6 +252,14 @@ const setDarkMode = on => {
 };
 
 /**
+ * Error logger
+ */
+const logStorageErrorAndFallback = error => {
+  console.error(`Error: ${error}`);
+  window.requestAnimationFrame(tryTogglingDarkMode);
+};
+
+/**
  * Get settings and execute
  * Doc: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/get
  */
@@ -280,4 +281,4 @@ browser.storage.sync.get(options).then(settings => {
     logStep('Default behavior.');
     setDarkMode(true);
   }
-}, logError);
+}, logStorageErrorAndFallback);

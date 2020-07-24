@@ -48,9 +48,7 @@ const isMenuOpen = () => {
 };
 
 const isMenuLoading = () => {
-  return !(
-    document.getElementById('spinner')
-  );
+  return !document.getElementById('spinner');
 };
 
 /*
@@ -227,19 +225,21 @@ const tryTogglingDarkModeTheOldWay = timestamp => {
 const setDarkMode = on => {
   var darkModeOn = isDarkThemeEnabled();
   if (on) {
-    if (!darkModeOn)
-      window.requestAnimationFrame(tryTogglingDarkMode);
-  } else if (darkModeOn)
-    window.requestAnimationFrame(tryTogglingDarkMode);
-}
+    if (!darkModeOn) window.requestAnimationFrame(tryTogglingDarkMode);
+  } else if (darkModeOn) window.requestAnimationFrame(tryTogglingDarkMode);
+};
 
 /*
  * Execute
  */
-if (window.matchMedia) {// if the browser/os supports system-level color scheme
+if (window.matchMedia) {
+  // if the browser/os supports system-level color scheme
   setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => setDarkMode(e.matches));
-} else {// otherwise use local time to decide
-  let hour = (new Date()).getHours();
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', e => setDarkMode(e.matches));
+} else {
+  // otherwise use local time to decide
+  let hour = new Date().getHours();
   setDarkMode(hour > 18 || hour < 8);
 }

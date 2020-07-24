@@ -14,6 +14,13 @@
     "96": "icons/icon_96.png",
     "128": "icons/icon_128.png"
   },
+  "background": {
+    "scripts": [
+      "core/logger.js",
+      "core/onInstalled.js"
+    ]
+  },
+
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],

@@ -3,9 +3,102 @@
     "message": "Thème Sombre Automatique pour Youtube™",
     "description": "Nom de l'extension."
   },
-
   "extensionDescription": {
     "message": "Utilise automatiquement le thème sombre proposé par Youtube™.",
     "description": "Description de l'extension."
+  },
+
+  "prefersColorSchemeTitle": {
+    "message": "Utiliser prefers-color-scheme",
+    "description": "Titre paramètre prefers-color-scheme settings."
+  },
+  "prefersColorSchemeDescription": {
+    "message": "Détecte les préférences exprimées par l'utilisateur au niveau navigateur ou OS quant au thème à utiliser (sombre ou clair), si le navigateur est compatible. (Priority 1)",
+    "description": "Description paramètre prefers-color-scheme settings."
+  },
+  "timeBasedTitle": {
+    "message": "Utiliser une activation par plage horaire",
+    "description": "Titre paramètre plage horaire."
+  },
+  "timeBasedDescription": {
+    "message": "Activera le thème sombre, seulement à certains moments de la journée. (Priority 2)",
+    "description": "Description paramètre plage horaire."
+  },
+  "beforeHourTitle": {
+    "message": "Activer avant",
+    "description": "Titre paramètre activer avant."
+  },
+  "beforeHourDescription": {
+    "message": "Active le thème sombre avant l'heure spécifiée, si l'activation par plage horaire est sélectionnée.",
+    "description": "Description paramètre activer avant."
+  },
+  "afterHourTitle": {
+    "message": "Activer après",
+    "description": "Titre paramètre activer après."
+  },
+  "afterHourDescription": {
+    "message": "Active le thème sombre après l'heure spécifiée, si l'activation par plage horaire est sélectionnée.",
+    "description": "Description paramètre activer après."
+  },
+
+  "WhatIsNewTitle": {
+    "message": "Quelles nouveautés en version",
+    "description": "Titre nouveautés."
+  },
+  "settingsLabel": {
+    "message": "Configuration",
+    "description": "Label configuration."
+  },
+  "settingsDesc": {
+    "message": "YtAutoDark garde son fonctionnement par défaut et reçoit des paramètres permettant d'ajuster son déclenchement.",
+    "description": "Description configuration."
+  },
+  "colorSchemeLabel": {
+    "message": "Prefers-color-scheme",
+    "description": "Label préférence thème."
+  },
+  "colorSchemeDesc": {
+    "message": "Si activé, YtAutoDark suit les préférences exprimées par l'utilisateur au niveau navigateur ou OS quant au thème à utiliser (sombre ou clair).",
+    "description": "Description préférence thème."
+  },
+  "timeBasedLabel": {
+    "message": "Déclenchement sur plage horaire",
+    "description": "Label plage horaire."
+  },
+  "timeBasedDesc": {
+    "message": "Si activé, YtAutoDark activera le thème sombre seulement avant et après les heures configurées.",
+    "description": "Description plage horaire."
+  },
+  "syncedLabel": {
+    "message": "Synchronisation",
+    "description": "Label synchronisation."
+  },
+  "syncedDesc1": {
+    "message": "YtAutoDark utilise le stockage synchronisé.",
+    "description": "Synchronisation description 1."
+  },
+  "syncedDesc2": {
+    "message": "Les paramètres seront partagés entre toutes les instances de navigateur dans lesquelles l'utilisateur est connecté.",
+    "description": "Synchronisation description 2."
+  },
+  "syncedDesc3": {
+    "message": "Si le storage synchronisé n'est pas disponible, le stockage local sera utilisé.",
+    "description": "Synchronisation description 3."
+  },
+  "installUpdateLabel": {
+    "message": "Page d'installation et de mise à jour",
+    "description": "Label page installation et mise à jour."
+  },
+  "installUpdateDesc": {
+    "message": "Cette page permettra aux utilisateurs d'être notifié des nouvelles versions majeures.",
+    "description": "Description page installation et mise à jour."
+  },
+  "learnMoreTitle": {
+    "message": "En savoir plus, ou contribuer.",
+    "description": "Titre contribuer."
+  },
+  "donate": {
+    "message": "Don",
+    "description": "Texte du bouton de don."
   }
 }

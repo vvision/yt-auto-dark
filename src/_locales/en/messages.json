@@ -78,11 +78,11 @@
     "description": "Synced description 1."
   },
   "syncedDesc2": {
-    "message": "Settings should be shared across all instances of that browser that the user is logged into.",
+    "message": "Settings will be shared across all instances of that browser that the user is logged into.",
     "description": "Synced description 2."
   },
   "syncedDesc3": {
-    "message": "If synced storage is not available, it should automatically fallback to local storage.",
+    "message": "If synced storage is not available, it will automatically fallback to local storage.",
     "description": "Synced description 3."
   },
   "installUpdateLabel": {
@@ -94,7 +94,7 @@
     "description": "Install/update page description."
   },
   "learnMoreTitle": {
-    "message": "Learn more, or contribute",
+    "message": "Learn more, or contribute.",
     "description": "Contribute title."
   },
   "donate": {

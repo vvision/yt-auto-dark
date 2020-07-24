@@ -18,7 +18,7 @@
 /**
  * Debugging helpers
  */
-const debug = true;
+const debug = false;
 const logStep = message => {
   if (debug) {
     console.log(message);

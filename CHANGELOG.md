@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.1 (2020-07-25)
+
+### Added
+- Add webextension-polyfill for Chrome compatibility.
+
 ## 3.0.0 (2020-07-25)
 
 ### Added

@@ -16,6 +16,7 @@
   },
   "background": {
     "scripts": [
+      "modules/external/browser-polyfill.min.js",
       "core/logger.js",
       "core/onInstalled.js"
     ]
@@ -25,6 +26,7 @@
     {
       "matches": ["*://*.youtube.com/*"],
       "js": [
+        "modules/external/browser-polyfill.min.js",
         "core/logger.js",
         "ytAutoDark.js"
       ]

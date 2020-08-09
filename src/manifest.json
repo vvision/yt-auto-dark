@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "short_name": "YtAutoDark",
-  "version": "2.1.0",
+  "version": "3.0.1",
   "author": "Victor Voisin",
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/vvision/yt-auto-dark",
@@ -14,19 +14,39 @@
     "96": "icons/icon_96.png",
     "128": "icons/icon_128.png"
   },
+  "background": {
+    "scripts": [
+      "modules/external/browser-polyfill.min.js",
+      "core/logger.js",
+      "core/onInstalled.js"
+    ]
+  },
+
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
-      "js": ["ytAutoDark.js"]
+      "js": [
+        "modules/external/browser-polyfill.min.js",
+        "core/logger.js",
+        "ytAutoDark.js"
+      ]
     }
   ],
+
+  "options_ui": {
+    "page": "pages/options/options.html"
+  },
+  "permissions": ["storage"],
+
   "applications": {
     "gecko": {
       "id": "vvision-ytAutoDark@unicoda.fr"
     }
   },
+
   "browser_specific_settings": {
     "gecko": {
+      "id": "vvision-ytAutoDark@unicoda.fr",
       "strict_min_version": "60.0"
     }
   }

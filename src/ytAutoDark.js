@@ -15,18 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const debug = false;
-const logStep = message => {
-  if (debug) {
-    console.log(message);
-  }
-};
-
+/**
+ * Is dark theme enabled ?
+ */
 const isDarkThemeEnabled = () => {
   return Boolean(document.querySelector('html').hasAttribute('dark'));
 };
 
-/*
+/**
  * Three dot menu button.
  */
 const isMenuButtonAvailableInDom = () => {
@@ -48,12 +44,10 @@ const isMenuOpen = () => {
 };
 
 const isMenuLoading = () => {
-  return !(
-    document.getElementById('spinner')
-  );
+  return !document.getElementById('spinner');
 };
 
-/*
+/**
  * Link arrow to dark theme popup.
  */
 const isCompactLinkAvailableInDom = () => {
@@ -83,7 +77,7 @@ const isRendererLoading = () => {
   );
 };
 
-/*
+/**
  * Check toggle button.
  */
 const isSwitchAvailableInDom = () => {
@@ -92,7 +86,7 @@ const isSwitchAvailableInDom = () => {
   );
 };
 
-/*
+/**
  * Toggle dark theme by clicking element in DOM.
  */
 const toggleDarkTheme = () => {
@@ -110,7 +104,7 @@ const toggleDarkTheme = () => {
   }
 };
 
-/*
+/**
  * Wait for all elements to exist in DOM then toggle
  * Step 1: Wait for 3 dots menu in DOM.
  * Step 2: Click on 3 dots to open menu.
@@ -180,26 +174,32 @@ const tryTogglingDarkMode = timestamp => {
   }
 };
 
-/*
+/**
  * @Deprecated
  * Old way of doing things.
  * Kept here for backward compatibility.
  * Will be removed in a few month.
  */
 
-// @Deprecated
+/**
+ * @Deprecated
+ */
 const openCloseMenu = () => {
   document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
   document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
 };
 
-// @Deprecated
+/**
+ * @Deprecated
+ */
 const openCloseRenderer = () => {
   document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
   document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
 };
 
-// @Deprecated
+/**
+ * @Deprecated
+ */
 let startOldWay = null;
 const tryTogglingDarkModeTheOldWay = timestamp => {
   // Compute runtime
@@ -225,21 +225,44 @@ const tryTogglingDarkModeTheOldWay = timestamp => {
 };
 
 const setDarkMode = on => {
-  var darkModeOn = isDarkThemeEnabled();
+  const isDarkModeOn = isDarkThemeEnabled();
   if (on) {
-    if (!darkModeOn)
+    if (!isDarkModeOn) {
       window.requestAnimationFrame(tryTogglingDarkMode);
-  } else if (darkModeOn)
+    }
+  } else if (isDarkModeOn) {
     window.requestAnimationFrame(tryTogglingDarkMode);
-}
+  }
+};
 
-/*
- * Execute
+/**
+ * Error logger
  */
-if (window.matchMedia) {// if the browser/os supports system-level color scheme
-  setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => setDarkMode(e.matches));
-} else {// otherwise use local time to decide
-  let hour = (new Date()).getHours();
-  setDarkMode(hour > 18 || hour < 8);
-}
+const logStorageErrorAndFallback = error => {
+  console.error(`Error: ${error}`);
+  window.requestAnimationFrame(tryTogglingDarkMode);
+};
+
+/**
+ * Get settings and execute
+ * Doc: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/get
+ */
+const options = ['prefersColorScheme', 'timeBased', 'beforeHour', 'afterHour'];
+browser.storage.sync.get(options).then(settings => {
+  logStep(`Storage contains: ${JSON.stringify(settings)}`);
+  if (window.matchMedia && settings.prefersColorScheme) {
+    // if the browser/os supports system-level color scheme
+    logStep('Follow system-level color scheme.');
+    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', e => setDarkMode(e.matches));
+  } else if (settings.timeBased) {
+    logStep('Use local time to decide.');
+    let hour = new Date().getHours();
+    setDarkMode(hour > settings.afterHour || hour < settings.beforeHour);
+  } else {
+    logStep('Default behavior.');
+    setDarkMode(true);
+  }
+}, logStorageErrorAndFallback);

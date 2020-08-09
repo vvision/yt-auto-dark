@@ -1,3 +1,7 @@
 {
-  "extends": "@unicoda/eslint-config/configurations/frontend"
+  "extends": "@unicoda/eslint-config/configurations/frontend",
+  "globals": {
+    "browser": true,
+    "chrome": true
+  }
 }

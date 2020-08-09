@@ -1,5 +1,26 @@
 # Changelog
 
+## 3.0.1 (2020-07-25)
+
+### Added
+- Add webextension-polyfill for Chrome compatibility.
+
+## 3.0.0 (2020-07-25)
+
+### Added
+- Add prefers-color-scheme toggle setting.
+- Add time base toggle setting.
+- Use sync storage to store settings.
+- Add install/update page. Will be displayed only on installation or when updating to a major version starting with 3.0.0.
+- I18n all new content.
+- Add helpers functions to insert i18n content into document.
+
+### Changed
+- Split code into multiple files.
+
+### Fixed
+- Bump lodash from 4.17.15 to 4.17.19.
+
 ## 2.1.0 (2020-07-20)
 
 ### Changed

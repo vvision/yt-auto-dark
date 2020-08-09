@@ -1,0 +1,92 @@
+/**
+ * Based on decentraleyes CSS
+ * https://git.synz.io/Synzvato/decentraleyes/-/blob/master/pages/options/options.css
+ */
+
+
+/**
+ * Sections
+ */
+
+body {
+  color: #555;
+  cursor: default;
+  font-family: 'Noto Sans', Arial, sans-serif !important;
+  font-size: 12px;
+  margin-bottom: 5px;
+  margin-top: -15px;
+  padding: 10px !important;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+/**
+ * Titles
+ */
+
+.title-option {
+  align-items: center;
+  display: flex;
+  font-weight: 600;
+}
+
+/**
+ * Controls
+ */
+
+.input-checkbox {
+  margin: 0 5px 0 0;
+  outline: 0;
+}
+
+.input-text {
+  margin-left: 29px;
+  max-width: 320px;
+}
+
+.text-label {
+  padding: 0 2px;
+}
+
+.input-checkbox:focus + .text-label {
+  outline: 1px dotted #000;
+}
+
+/**
+ * Miscellaneous
+ */
+
+.description-option {
+  color: #757575;
+  font-style: italic;
+  padding-left: 29px;
+}
+
+.label-checkbox {
+  align-items: center;
+  display: flex;
+}
+
+/**
+ * Compatibility
+ */
+
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background-color: #202023;
+    color: #f9f9fa;
+  }
+
+  .description-option {
+    color: #b1b1b3;
+  }
+
+  .input-checkbox:focus + .text-label {
+    outline: 1px dotted #f9f9fa;
+  }
+}

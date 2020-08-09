@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>YtAutoDark Options</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="options.css" />
+  </head>
+
+  <body>
+    <section class="option">
+      <div class="title-option">
+        <label class="label-checkbox">
+          <input
+            id="prefersColorScheme"
+            class="input-checkbox"
+            type="checkbox"
+          />
+          <span
+            class="text-label"
+            data-i18n-content="prefersColorSchemeTitle"
+          ></span>
+        </label>
+      </div>
+      <div
+        class="description-option"
+        data-i18n-content="prefersColorSchemeDescription"
+      ></div>
+    </section>
+
+    <section class="option">
+      <div class="title-option">
+        <label class="label-checkbox">
+          <input id="timeBased" class="input-checkbox" type="checkbox" />
+          <span class="text-label" data-i18n-content="timeBasedTitle"></span>
+        </label>
+      </div>
+      <div
+        class="description-option"
+        data-i18n-content="timeBasedDescription"
+      ></div>
+    </section>
+
+    <section class="option">
+      <div class="title-option">
+        <label class="label-checkbox">
+          <input
+            id="beforeHour"
+            class="input-checkbox"
+            type="number"
+            min="0"
+            max="23"
+            value="8"
+          />
+          <span class="text-label" data-i18n-content="beforeHourTitle"></span>
+        </label>
+      </div>
+      <div
+        class="description-option"
+        data-i18n-content="beforeHourDescription"
+      ></div>
+    </section>
+
+    <section class="option">
+      <div class="title-option">
+        <label class="label-checkbox">
+          <input
+            id="afterHour"
+            class="input-checkbox"
+            type="number"
+            min="0"
+            max="23"
+            value="18"
+          />
+          <span class="text-label" data-i18n-content="afterHourTitle"></span>
+        </label>
+      </div>
+      <div
+        class="description-option"
+        data-i18n-content="afterHourDescription"
+      ></div>
+    </section>
+
+    <script src="../../modules/external/browser-polyfill.min.js"></script>
+    <script src="../../modules/internal/helpers.js"></script>
+    <script src="../../core/logger.js"></script>
+
+    <script src="options.js"></script>
+  </body>
+</html>

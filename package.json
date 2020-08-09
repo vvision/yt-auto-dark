@@ -1,6 +1,6 @@
 {
   "name": "ytAutoDark",
-  "version": "2.1.0",
+  "version": "3.0.1",
   "description": "Automatically switch Youtube to its built-in dark theme.",
   "author": "Victor Voisin",
   "contributors": [
@@ -19,9 +19,13 @@
     "url": "https://github.com/vvision/yt-auto-dark/issues"
   },
   "scripts": {
-    "build": "npm run noDevDebug && npm run lint && web-ext build -s src -o",
+    "build": "npm run noDevDebug && npm run copy-polyfill && npm run lint && web-ext build -s src -o",
+    "copy-polyfill": "node utils/copyWebExtensionPolyfill.js",
     "lint": "web-ext lint -s src",
-    "start:firefox": "web-ext run --source-dir ./src/ --start-url www.youtube.com",
+    "start:chrome": "npm run start:firefox -- --target chromium",
+    "start:chrome:verbose": "npm run start:chrome -- --verbose",
+    "start:firefox": "npm run copy-polyfill && web-ext run --source-dir ./src/ --start-url www.youtube.com --browser-console",
+    "start:firefox:verbose": "npm run start:firefox -- --verbose",
     "noDevDebug": "node utils/isDebugDisable.js"
   },
   "devDependencies": {
@@ -29,6 +33,7 @@
     "@unicoda/prettier-config": "^0.2.0",
     "eslint": "^6.8.0",
     "prettier": "^2.0.5",
-    "web-ext": "^4.2.0"
+    "web-ext": "^4.2.0",
+    "webextension-polyfill": "^0.6.0"
   }
 }

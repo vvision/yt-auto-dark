@@ -3,9 +3,102 @@
     "message": "Automatic Dark Theme For Youtube™",
     "description": "Name of the extension."
   },
-
   "extensionDescription": {
     "message": "Automatically switch Youtube to its built-in dark theme.",
     "description": "Description of the extension."
+  },
+
+  "prefersColorSchemeTitle": {
+    "message": "Use prefers-color-scheme",
+    "description": "prefers-color-scheme settings title."
+  },
+  "prefersColorSchemeDescription": {
+    "message": "Will follow browser/os system-level color scheme if browser supports it. (Priority 1)",
+    "description": "prefers-color-scheme settings description."
+  },
+  "timeBasedTitle": {
+    "message": "Use time based toggle",
+    "description": "time based toggle settings title."
+  },
+  "timeBasedDescription": {
+    "message": "Will toggle dark theme only during certain hours. (Priority 2)",
+    "description": "time based toggle settings description."
+  },
+  "beforeHourTitle": {
+    "message": "Toggle before hour",
+    "description": "beforeHour settings title."
+  },
+  "beforeHourDescription": {
+    "message": "Toggle dark theme before specified hour if time based toggle is activated.",
+    "description": "beforeHour settings description."
+  },
+  "afterHourTitle": {
+    "message": "Toggle after hour",
+    "description": "afterHour settings title."
+  },
+  "afterHourDescription": {
+    "message": "Toggle dark theme after specified hour if time based toggle is activated.",
+    "description": "afterHour settings description."
+  },
+
+  "WhatIsNewTitle": {
+    "message": "What's new in version",
+    "description": "What's new title."
+  },
+  "settingsLabel": {
+    "message": "Settings",
+    "description": "Settings label."
+  },
+  "settingsDesc": {
+    "message": "YtAutoDark keeps its default behavior, and gets some settings to adjust the way it's triggered.",
+    "description": "Settings description ."
+  },
+  "colorSchemeLabel": {
+    "message": "Prefers-color-scheme",
+    "description": "Color scheme label."
+  },
+  "colorSchemeDesc": {
+    "message": "If active, YtAutoDark follows browser/os system-level color scheme if browser supports it.",
+    "description": "Color scheme description."
+  },
+  "timeBasedLabel": {
+    "message": "Time based toggle",
+    "description": "Time based label."
+  },
+  "timeBasedDesc": {
+    "message": "If active, YtAutoDark will only toggle dark theme before and after the configured hours.",
+    "description": "Time based description."
+  },
+  "syncedLabel": {
+    "message": "Synced",
+    "description": "Synced label."
+  },
+  "syncedDesc1": {
+    "message": "YtAutoDark uses synced storage.",
+    "description": "Synced description 1."
+  },
+  "syncedDesc2": {
+    "message": "Settings will be shared across all instances of that browser that the user is logged into.",
+    "description": "Synced description 2."
+  },
+  "syncedDesc3": {
+    "message": "If synced storage is not available, it will automatically fallback to local storage.",
+    "description": "Synced description 3."
+  },
+  "installUpdateLabel": {
+    "message": "Install/update page",
+    "description": "Install/update page label."
+  },
+  "installUpdateDesc": {
+    "message": "This page will allow users to be notified of new major versions.",
+    "description": "Install/update page description."
+  },
+  "learnMoreTitle": {
+    "message": "Learn more, or contribute.",
+    "description": "Contribute title."
+  },
+  "donate": {
+    "message": "Donate",
+    "description": "Donate button text."
   }
 }

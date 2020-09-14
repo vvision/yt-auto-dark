@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "short_name": "YtAutoDark",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Victor Voisin",
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/vvision/yt-auto-dark",

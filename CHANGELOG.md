@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.2 (2020-09-14)
+
+### Fixed
+- Changed the elements to click due to changes on YouTube
+
 ## 3.0.1 (2020-07-25)
 
 ### Added

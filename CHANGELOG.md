@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.3 (2020-09-15)
+
+### Fixed
+- Improved compatibility
+
 ## 3.0.2 (2020-09-14)
 
 ### Fixed

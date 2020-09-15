@@ -80,22 +80,44 @@ const isRendererLoading = () => {
 /**
  * Check theme menu.
  */
+const ThemeMenuType = {
+  "none": 0,
+  "toggle": 1,
+  "menu": 2
+}
 const isThemeMenuAvailableInDom = () => {
-  return Boolean(
-    document.querySelector('ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer')
-  );
+  let ret = ThemeMenuType.none;
+  if (Boolean(document.querySelector('#caption-container > paper-toggle-button')))
+    ret = ThemeMenuType.toggle;
+  else if (Boolean(document.querySelector('ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer')))
+    ret = ThemeMenuType.menu;
+  return ret;
 };
 
 /**
- * Toggle dark theme by clicking element in DOM.
- */
+* Toggle dark theme by clicking element in DOM.
+*/
 const toggleDarkTheme = () => {
-  if (isCompactLinkAvailableInDom() && isThemeMenuAvailableInDom()) {
+  let themeMenuType;
+  if (isCompactLinkAvailableInDom() && (themeMenuType = isThemeMenuAvailableInDom())) {
     logStep('Toggle dark theme.');
-    document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
-    document
-      .querySelector(`ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer:nth-of-type(${isDarkThemeEnabled() ? 4 : 3})`)
-      .click();
+    switch (themeMenuType) {
+      case ThemeMenuType.toggle: {
+        document
+          .querySelector('#caption-container > paper-toggle-button')
+          .click();
+        break;
+      }
+      case ThemeMenuType.menu: {
+        document
+          .querySelector(`ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer:nth-of-type(${isDarkThemeEnabled() ? 4 : 3})`)
+          .click();
+        break;
+      }
+      default: {
+        logStep('Unknown theme menu type');
+      }
+    }
   } else {
     logStep('Unable to toggle. Waiting longer.');
     setTimeout(() => {

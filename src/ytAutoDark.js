@@ -78,24 +78,46 @@ const isRendererLoading = () => {
 };
 
 /**
- * Check toggle button.
+ * Check theme menu.
  */
-const isSwitchAvailableInDom = () => {
-  return Boolean(
-    document.querySelector('paper-toggle-button.ytd-toggle-item-renderer'),
-  );
+const ThemeMenuType = {
+  "none": 0,
+  "toggle": 1,
+  "menu": 2
+}
+const isThemeMenuAvailableInDom = () => {
+  let ret = ThemeMenuType.none;
+  if (Boolean(document.querySelector('#caption-container > paper-toggle-button')))
+    ret = ThemeMenuType.toggle;
+  else if (Boolean(document.querySelector('ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer')))
+    ret = ThemeMenuType.menu;
+  return ret;
 };
 
 /**
- * Toggle dark theme by clicking element in DOM.
- */
+* Toggle dark theme by clicking element in DOM.
+*/
 const toggleDarkTheme = () => {
-  if (isCompactLinkAvailableInDom() && isSwitchAvailableInDom()) {
+  let themeMenuType;
+  if (isCompactLinkAvailableInDom() && (themeMenuType = isThemeMenuAvailableInDom())) {
     logStep('Toggle dark theme.');
-    document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
-    document
-      .querySelector('paper-toggle-button.ytd-toggle-item-renderer')
-      .click();
+    switch (themeMenuType) {
+      case ThemeMenuType.toggle: {
+        document
+          .querySelector('#caption-container > paper-toggle-button')
+          .click();
+        break;
+      }
+      case ThemeMenuType.menu: {
+        document
+          .querySelector(`ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer:nth-of-type(${isDarkThemeEnabled() ? 4 : 3})`)
+          .click();
+        break;
+      }
+      default: {
+        logStep('Unknown theme menu type');
+      }
+    }
   } else {
     logStep('Unable to toggle. Waiting longer.');
     setTimeout(() => {
@@ -214,7 +236,7 @@ const tryTogglingDarkModeTheOldWay = timestamp => {
     } else if (!isCompactLinkAvailableInDom()) {
       openCloseMenu();
       window.requestAnimationFrame(tryTogglingDarkMode);
-    } else if (!isSwitchAvailableInDom()) {
+    } else if (!isThemeMenuAvailableInDom()) {
       openCloseRenderer();
       window.requestAnimationFrame(tryTogglingDarkMode);
     } else {

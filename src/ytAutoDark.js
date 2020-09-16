@@ -81,25 +81,36 @@ const isRendererLoading = () => {
  * Check theme menu.
  */
 const ThemeMenuType = {
-  "none": 0,
-  "toggle": 1,
-  "menu": 2
-}
+  none: 0,
+  toggle: 1,
+  menu: 2,
+};
 const isThemeMenuAvailableInDom = () => {
   let ret = ThemeMenuType.none;
-  if (Boolean(document.querySelector('#caption-container > paper-toggle-button')))
+  if (
+    Boolean(document.querySelector('#caption-container > paper-toggle-button'))
+  )
     ret = ThemeMenuType.toggle;
-  else if (Boolean(document.querySelector('ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer')))
+  else if (
+    Boolean(
+      document.querySelector(
+        'ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer',
+      ),
+    )
+  )
     ret = ThemeMenuType.menu;
   return ret;
 };
 
 /**
-* Toggle dark theme by clicking element in DOM.
-*/
+ * Toggle dark theme by clicking element in DOM.
+ */
 const toggleDarkTheme = () => {
   let themeMenuType;
-  if (isCompactLinkAvailableInDom() && (themeMenuType = isThemeMenuAvailableInDom())) {
+  if (
+    isCompactLinkAvailableInDom() &&
+    (themeMenuType = isThemeMenuAvailableInDom())
+  ) {
     logStep('Toggle dark theme.');
     switch (themeMenuType) {
       case ThemeMenuType.toggle: {
@@ -110,7 +121,11 @@ const toggleDarkTheme = () => {
       }
       case ThemeMenuType.menu: {
         document
-          .querySelector(`ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer:nth-of-type(${isDarkThemeEnabled() ? 4 : 3})`)
+          .querySelector(
+            `ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer:nth-of-type(${
+              isDarkThemeEnabled() ? 4 : 3
+            })`,
+          )
           .click();
         break;
       }

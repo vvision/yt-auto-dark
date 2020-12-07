@@ -15,6 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+let rendererClicked = false;
+
 /**
  * Is dark theme enabled ?
  */
@@ -72,6 +74,7 @@ const isCompactLinkAvailableInDom = () => {
 const clickRenderer = () => {
   logStep('Click renderer');
   document.querySelector('ytd-toggle-theme-compact-link-renderer').click();
+  rendererClicked = true;
 };
 
 const isRendererOpen = () => {
@@ -202,7 +205,7 @@ const tryTogglingDarkMode = timestamp => {
       setTimeout(() => {
         window.requestAnimationFrame(tryTogglingDarkMode);
       }, 50);
-    } else if (!isRendererOpen()) {
+    } else if (!isRendererOpen() && !rendererClicked) {
       logStep('Renderer is not open.');
       clickRenderer();
       setTimeout(() => {

@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.1.0 (2020-12-07)
+
+Youtube interface is still evolving.
+This version tries to add compatibility with new designs.
+Sadly, new designs are only pushed to an increasing number of users at a time, making it difficult to test.
+
+### Changed
+- 3 dots button is always last in top bar, so use a dynamic index rather than a static one.
+- Check if top bar exists as first step in the activation process.
+
+### Fixed
+- Fix menu staying open until timeout expiration and old toggling code taking the lead.
+
 ## 3.0.3 (2020-09-15)
 
 ### Fixed

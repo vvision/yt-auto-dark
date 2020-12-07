@@ -38,17 +38,17 @@ const isTopBarLoaded = () => {
  */
 const isMenuButtonAvailableInDom = () => {
   const elements = document.querySelectorAll('ytd-topbar-menu-button-renderer');
-  const indice = elements.length - 1;
+  const index = elements.length - 1;
 
-  return Boolean(elements[indice]);
+  return Boolean(elements[index]);
 };
 
 const clickMenu = () => {
   logStep('Click on menu.');
   const elements = document.querySelectorAll('ytd-topbar-menu-button-renderer');
-  const indice = elements.length - 1;
+  const index = elements.length - 1;
 
-  elements[indice].click();
+  elements[index].click();
 };
 
 const isMenuOpen = () => {
@@ -246,10 +246,10 @@ const tryTogglingDarkMode = timestamp => {
  */
 const openCloseMenu = () => {
   const elements = document.querySelectorAll('ytd-topbar-menu-button-renderer');
-  const indice = elements.length - 1;
+  const index = elements.length - 1;
 
-  elements[indice].click();
-  elements[indice].click();
+  elements[index].click();
+  elements[index].click();
 };
 
 /**

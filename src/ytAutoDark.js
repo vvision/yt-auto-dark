@@ -102,16 +102,17 @@ const isThemeMenuAvailableInDom = () => {
   let ret = ThemeMenuType.none;
   if (
     Boolean(document.querySelector('#caption-container > paper-toggle-button'))
-  )
+  ) {
     ret = ThemeMenuType.toggle;
-  else if (
+  } else if (
     Boolean(
       document.querySelector(
         'ytd-multi-page-menu-renderer > #submenu #container #sections #items > ytd-compact-link-renderer',
       ),
     )
-  )
+  ) {
     ret = ThemeMenuType.menu;
+  }
   return ret;
 };
 

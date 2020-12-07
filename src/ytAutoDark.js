@@ -150,6 +150,8 @@ const toggleDarkTheme = () => {
         logStep('Unknown theme menu type');
       }
     }
+    // Reset renderer open state
+    rendererClicked = false;
   } else {
     logStep('Unable to toggle. Waiting longer.');
     setTimeout(() => {

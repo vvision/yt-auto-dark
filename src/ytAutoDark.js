@@ -23,17 +23,30 @@ const isDarkThemeEnabled = () => {
 };
 
 /**
+ * Check if top bar is available.
+ */
+const isTopBarLoaded = () => {
+  return Boolean(
+    document.querySelectorAll('ytd-topbar-menu-button-renderer').length > 0,
+  );
+};
+
+/**
  * Three dot menu button.
  */
 const isMenuButtonAvailableInDom = () => {
-  return Boolean(
-    document.querySelectorAll('ytd-topbar-menu-button-renderer')[2],
-  );
+  const elements = document.querySelectorAll('ytd-topbar-menu-button-renderer');
+  const indice = elements.length - 1;
+
+  return Boolean(elements[indice]);
 };
 
 const clickMenu = () => {
   logStep('Click on menu.');
-  document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
+  const elements = document.querySelectorAll('ytd-topbar-menu-button-renderer');
+  const indice = elements.length - 1;
+
+  elements[indice].click();
 };
 
 const isMenuOpen = () => {
@@ -143,14 +156,15 @@ const toggleDarkTheme = () => {
 
 /**
  * Wait for all elements to exist in DOM then toggle
- * Step 1: Wait for 3 dots menu in DOM.
- * Step 2: Click on 3 dots to open menu.
- * Step 3: Wait for menu to finish loading.
- * Step 4: Waiting for link to sub-menu (Should be optional now, because of step 3).
- * Step 5: Click to open sub-menu (renderer pane).
- * Step 6: Wait for sub-menu to finish loading.
- * Step 7: Toggle dark theme.
- * Step 8: Close menu.
+ * Step 1: Wait for top bar in DOM.
+ * Step 2: Look for 3 dots menu in DOM.
+ * Step 3: Click on 3 dots to open menu.
+ * Step 4: Wait for menu to finish loading.
+ * Step 5: Waiting for link to sub-menu (Should be optional now, because of step 3).
+ * Step 6: Click to open sub-menu (renderer pane).
+ * Step 7: Wait for sub-menu to finish loading.
+ * Step 8: Toggle dark theme.
+ * Step 9: Close menu.
  */
 let start = null;
 const tryTogglingDarkMode = timestamp => {
@@ -161,7 +175,12 @@ const tryTogglingDarkMode = timestamp => {
   const runtime = timestamp - start;
   // Try to toggle only during 10s
   if (runtime < 10000) {
-    if (!isMenuButtonAvailableInDom()) {
+    if (!isTopBarLoaded) {
+      logStep('Waiting for top bar.');
+      setTimeout(() => {
+        window.requestAnimationFrame(tryTogglingDarkMode);
+      }, 50);
+    } else if (!isMenuButtonAvailableInDom()) {
       logStep('Waiting for 3 dots menu.');
       setTimeout(() => {
         window.requestAnimationFrame(tryTogglingDarkMode);
@@ -222,8 +241,11 @@ const tryTogglingDarkMode = timestamp => {
  * @Deprecated
  */
 const openCloseMenu = () => {
-  document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
-  document.querySelectorAll('ytd-topbar-menu-button-renderer')[2].click();
+  const elements = document.querySelectorAll('ytd-topbar-menu-button-renderer');
+  const indice = elements.length - 1;
+
+  elements[indice].click();
+  elements[indice].click();
 };
 
 /**

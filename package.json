@@ -33,7 +33,7 @@
     "@unicoda/prettier-config": "^0.2.0",
     "eslint": "^7.9.0",
     "prettier": "^2.1.2",
-    "web-ext": "^5.0.0",
+    "web-ext": "^5.4.1",
     "webextension-polyfill": "^0.6.0"
   }
 }

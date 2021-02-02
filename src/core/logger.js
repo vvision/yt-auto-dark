@@ -1,4 +1,4 @@
-/* ytAutoDark. Automatically toggle Youtube built-in dark theme.
+/** ytAutoDark. Automatically toggle Youtube built-in dark theme.
  * Copyright (C) 2019-2020  Victor VOISIN
 
  * This program is free software: you can redistribute it and/or modify
